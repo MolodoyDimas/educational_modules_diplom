@@ -11,4 +11,4 @@ class TitleValidator:
         reg = re.compile('^[a-z0-9\.\-\ ]+$')
         tmp_val = dict(value).get(self.field)
         if not bool(reg.match(tmp_val)):
-            raise ValidationError('Наазвание некорректно')
+            raise ValidationError('Название некорректно')
