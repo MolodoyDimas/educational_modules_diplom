@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.contrib.auth.hashers import make_password
-from django.apps import apps
 
 
 NULLABLE = {'blank': True, 'null': True}
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -36,11 +35,15 @@ class UserRole(models.TextChoices):
 class User(AbstractUser):
     username = None
 
-    role = models.CharField(max_length=250, choices=UserRole.choices, default=UserRole.MEMBER)
+    role = models.CharField(max_length=250, choices=UserRole.choices,
+                            default=UserRole.MEMBER)
     email = models.EmailField(unique=True, verbose_name='email')
-    avatar = models.ImageField(upload_to='users/', verbose_name='аватар', **NULLABLE)
-    phone_num = models.CharField(max_length=35, verbose_name='номер телефона', **NULLABLE)
-    country = models.CharField(max_length=150, verbose_name='страна', **NULLABLE)
+    avatar = models.ImageField(upload_to='users/', verbose_name='аватар',
+                               **NULLABLE)
+    phone_num = models.CharField(max_length=35, verbose_name='номер телефона',
+                                 **NULLABLE)
+    country = models.CharField(max_length=150, verbose_name='страна',
+                               **NULLABLE)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

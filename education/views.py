@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny
 from education.models import Module
-from education.paginators import ModulePaginator
-from education.permissions import IsMember, IsModerator
+# from education.paginators import ModulePaginator
+# from education.permissions import IsMember, IsModerator
 from education.serializers import ModuleSerializer
 
 

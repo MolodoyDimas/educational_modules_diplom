@@ -1,4 +1,3 @@
-
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -28,7 +27,8 @@ class ModuleTestCase(APITestCase):
         )
         self.assertEquals(
             response.json(),
-            [{'id': 1, 'title': 'test', 'description': ''}])
+            [{'id': 1, 'sequence_number': None,
+              'title': 'test', 'description': ''}])
 
     def test_module_create(self):
         """
@@ -102,7 +102,8 @@ class ModuleTestCase2(APITestCase):
 
         self.assertEquals(
             response.json(),
-            {'id': self.module.id, 'title': 'test', 'description': 'update_test'}
+            {'id': self.module.id, 'sequence_number': None,
+             'title': 'test', 'description': 'update_test'}
         )
 
     def test_module_delete(self):
